@@ -1,6 +1,25 @@
 name: workflow1
 on: workflow_dispatch
 jobs:
+ lint:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Get code
+      uses: actions/checkout@v3
+    - name: Install dependency
+      run: npm ci
+    - name: lint
+      run: npm run lint
+    - name: test code
+ test:
+   runs-on: ubuntu-latest
+   steps:
+    - name: Get code
+      uses: actions/checkout@v3
+    - name: Install dependency
+      run: npm ci
+    - name: test code
+      run: npm run test
  deploy:
    runs-on: ubuntu-latest
    steps:
